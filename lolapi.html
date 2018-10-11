@@ -2,19 +2,52 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>LoL Api for live game stats</title>
+    <title>LoL Api game stats</title>
         <link rel="stylesheet" href="lolapi.css" type="text/css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   </head>
-  <body>
+  <body class="table-dark">
 
-    <h1 class="title">Live LoL stats</h1>
+    <h1 class="title">LoL stats</h1>
     <div class="buttons">
-        <button id="api_call">Show live data</button>
+        <button id="get_live_data">Show live data</button>
+        <button id="get_last_match_data">Show last match data</button>
+    </div>
+    
+    <p> </p>
+    
+    <div class="container table-hover table-dark">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          Teams
+        </div>
+        <div class="col-sm-12 col-lg-6" id="team_100">
+          Team blue
+          <div class="team_icons">
+            <i id="firstBlood" class="fas fa-skull"></i>
+            <i id="firstTower" class="fas fa-chess-rook"></i>
+            <i id="firstDragon" class="fab fa-d-and-d"></i>
+            <i id="win" class="fas fa-trophy"></i>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-6" id="team_200">
+          Team red
+          <div class="team_icons">
+            <i id="firstBlood" class="fas fa-skull"></i>
+            <i id="firstTower" class="fas fa-chess-rook"></i>
+            <i id="firstDragon" class="fab fa-d-and-d"></i>
+            <i id="win" class="fas fa-trophy"></i>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <p id="quote">Quote goes here!!!</p>
-    
     <script type="text/javascript" src="lolapi.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>
