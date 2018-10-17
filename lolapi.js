@@ -1,4 +1,4 @@
-var API_KEY = "?api_key=RGAPI-b6f83e12-bdc8-403f-ba94-7550a599bdc4";
+var API_KEY = "?api_key=RGAPI-3e673f8c-5d78-4885-89c7-20fabe0026a4";
 var summoner_id = "32499748";
 var account_id = "36241712";
 var url_live = "https://euw1.api.riotgames.com/lol/spectator/v3/active-games/by-summoner/" + summoner_id + API_KEY;
@@ -23,7 +23,6 @@ lastbtn.addEventListener("click", function(){
    axios.get(url_last)
    .then(function(data){;
       for(var i = 0; i < 100; i++) {
-         console.log(i);
          if(data["data"]["matches"][i]["queue"] === 420) {
             var match_id = data["data"]["matches"][i]["gameId"];
             break;
@@ -32,7 +31,7 @@ lastbtn.addEventListener("click", function(){
       
       axios.get(url_match + match_id + API_KEY)
       .then(function(match_data){
-          console.log(match_data);
+          // console.log(match_data);
           var team_info = match_data["data"]["teams"];
           processTeamStats(team_info);
           // $("#team_100 #first_kill").hide();
@@ -48,13 +47,16 @@ lastbtn.addEventListener("click", function(){
 });
 
 function processTeamStats (team_info){
-   for(var i = 0; i < 100; i++) {
+   for(var i = 0; i < 3; i++) {
          team_info[i]["win"] = (team_info[i]["win"] === "Win")
          var team_keys = Object.keys(team_info[i]);
-         console.log(team_keys);
+         // console.log(team_keys);
          for(var j = 0; j < team_keys.length; j++) {
-            if (team_keys[j] in ["firstBaron", "firstBlood", "firstDragon", "win"]) {
-              console.log(team_keys[j]);  
+            if (team_keys[j] === "firstTower" || team_keys[j] === "firstBlood" || team_keys[j] === "firstDragon" || team_keys[j] === "win") {
+              console.log(team_info[i][team_keys[j]])
+              if (team_info[i][team_keys[j]]) {
+               $("#team_" + team_info[i]["teamId"] + " #" + team_keys[j]).hide(); 
+              }
             }
          }
    }
